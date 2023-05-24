@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Me</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      background-color: #333;
+      color: #fff;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .success-message {
+      display: none;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .animated {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Contact Me</h2>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="text" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <input type="submit" value="Submit">
+    </form>
+    <div id="success-message" class="success-message"></div>
+  </div>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var name = document.getElementsByName('name')[0].value;
+      var email = document.getElementsByName('email')[0].value;
+      var message = document.getElementsByName('message')[0].value;
+
+      // Simulating form submission and showing success message
+      setTimeout(function() {
+        document.getElementById('contact-form').reset();
+        document.getElementById('success-message').innerHTML = 'Thank you, ' + name + '! Your message has been sent.';
+        document.getElementById('success-message').style.display = 'block';
+        document.getElementById('success-message').classList.add('animated');
+        setTimeout(function() {
+          document.getElementById('success-message').style.display = 'none';
+          document.getElementById('success-message').classList.remove('animated');
+        }, 3000);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
